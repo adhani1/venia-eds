@@ -22,7 +22,7 @@ function generateFieldId(fd, suffix = '') {
 function createLabel(fd) {
   const label = document.createElement('label');
   label.id = generateFieldId(fd, '-label');
-  label.textContent = fd.Label ;
+  label.textContent = fd.Label;
   label.setAttribute('for', fd.Id);
   if (fd.Mandatory.toLowerCase() === 'true' || fd.Mandatory.toLowerCase() === 'x') {
     label.dataset.required = true;
@@ -224,7 +224,7 @@ const FIELD_CREATOR_FUNCTIONS = {
   fieldset: createFieldset,
   checkbox: createCheckbox,
   radio: createRadio,
-  input:createInput,
+  input: createInput,
 };
 
 export default async function createField(fd, form) {

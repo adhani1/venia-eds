@@ -19,17 +19,16 @@ function updateActiveSlide(slide) {
   });
 
   const allElements = document.querySelectorAll('.carouselcards-slide-indicator button:disabled');
-  if(allElements.length !=0){
-  for (let data of allElements) {
+  if (allElements.length !== 0) {
+    allElements.forEach((data) => {
       data.removeAttribute('disabled');
+    });
   }
-}
-if(slideIndex %4===0){
-let selector = `.carouselcards-slide-indicator[data-target-slide="${slideIndex}"]`;
-let targetElement = document.querySelector(selector).querySelector('button');
-console.log(targetElement)
-targetElement.setAttribute('disabled', 'true')
-}
+  if (slideIndex % 4 === 0) {
+    const selector = `.carouselcards-slide-indicator[data-target-slide="${slideIndex}"]`;
+    const targetElement = document.querySelector(selector).querySelector('button');
+    targetElement.setAttribute('disabled', 'true');
+  }
   // const indicators = block.querySelectorAll('.carouselcards-slide-indicator ');
   // indicators.forEach((indicator, idx) => {
   //   if (idx !== slideIndex) {
@@ -38,7 +37,6 @@ targetElement.setAttribute('disabled', 'true')
   //     indicator.querySelector('button').setAttribute('disabled', 'true');
   //   }
   // });
-
 }
 
 function showSlide(block, slideIndex = 0) {
@@ -74,7 +72,7 @@ function bindEvents(block) {
   });
 
   const slideObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry,idx) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) updateActiveSlide(entry.target);
     });
   }, { threshold: 0.5 });
@@ -94,30 +92,30 @@ function createSlide(row, slideIndex, carouselId) {
 
   const img = document.createElement('img');
   img.src = row.image; // Set the image URL
-  img.alt = row.title;  // Set the alt text for accessibility
+  img.alt = row.title; // Set the alt text for accessibility
   img.classList.add('carouselcards-card-image');
-  img.addEventListener('click',()=>{
-    window.location.href=row.path
-  })
+  img.addEventListener('click', () => {
+    window.location.href = row.path;
+  });
   const content = document.createElement('div');
   content.classList.add('carouselcards-card-content');
 
   const title = document.createElement('h6');
   title.textContent = row.title; // Set the title
-  title.addEventListener('click',()=>{
-    window.location.href=row.path
-  })
+  title.addEventListener('click', () => {
+    window.location.href = row.path;
+  });
   const description = document.createElement('p');
   description.textContent = row.price; // Set the description
 
-  const btn =document.createElement('a');
-  btn.href=row.path;
-  btn.classList.add('button')
-  btn.textContent='ADD TO CART'
+  const btn = document.createElement('a');
+  btn.href = row.path;
+  btn.classList.add('button');
+  btn.textContent = 'ADD TO CART';
   content.append(title, description, btn);
   card.append(img, content);
   slide.append(card);
-  
+
   return slide;
 }
 
@@ -125,9 +123,9 @@ let carouselId = 0;
 export default async function decorate(block) {
   carouselId += 1;
   block.setAttribute('id', `carouselcards-${carouselId}`);
-  const response=await fetch(`/query-index.json`)
-  const content =await response.json()
-  const jsonData=content.data.filter(data => data.price);
+  const response = await fetch('/query-index.json');
+  const content = await response.json();
+  const jsonData = content.data.filter((data) => data.price);
   const isSingleSlide = jsonData.length < 2;
   const placeholders = await fetchPlaceholders();
 
@@ -172,7 +170,7 @@ export default async function decorate(block) {
     <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
   `;
   container.append(slideNavButtons);
-  
+
   container.append(slidesWrapper);
   block.prepend(container);
 
