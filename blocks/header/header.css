@@ -19,6 +19,8 @@ header nav {
   height: var(--nav-height);
   padding: 0 24px;
   font-family: var(--body-font-family);
+  border-bottom: 1px solid rgb(209 213 219/1);
+  /* box-shadow: 0 8px 20px 0 rgba(0, 0, 0, .26); */
 }
 
 header nav[aria-expanded='true'] {
@@ -142,6 +144,7 @@ header .nav-brand {
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   line-height: 1;
+  flex-grow: 1;
 }
 
 header nav .nav-brand img {
@@ -152,7 +155,7 @@ header nav .nav-brand img {
 /* sections */
 header nav .nav-sections {
   grid-area: sections;
-  flex: 1 1 auto;
+  /* flex: 1 1 auto; */
   display: none;
   visibility: hidden;
 }
@@ -235,14 +238,23 @@ header nav .nav-sections ul > li > ul > li {
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
-    display: block;
+    /* display: block;
     position: absolute;
     left: -24px;
-    width: 200px;
+    width: 100%;
     top: 150%;
     padding: 16px;
     background-color: var(--light-color);
-    white-space: initial;
+    white-space: initial; */
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    position: fixed;
+    top: 63px;
+    left: 0;
+    border: 1px solid 1px solid rgb(209 213 219/1);
+    background-color: #fff;
+    padding: 10px;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
@@ -266,3 +278,54 @@ header nav .nav-sections ul > li > ul > li {
 header nav .nav-tools {
   grid-area: tools;
 }
+header .button{
+  all:unset !important
+}
+.header-top{
+  background: #000;
+  color: #fff;
+  text-align: right;
+  padding-right: 11pc;
+  font-size: 14px;
+}
+.header-top a{
+  all: unset;
+  cursor: pointer;
+}
+.header-top a:hover{
+  text-decoration: underline;
+}
+.header ul li{
+  font-size: var(--body-font-size-xs,14px);
+  font-family:  sans-serif;
+}
+.header .nav-tools ul{
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin:  0 !important;
+}
+.header .nav-tools li{
+  display: flex;
+}
+@media (width <= 530px) {
+  header nav .nav-brand img, header nav .nav-brand .icon {
+    width: 60px;
+    height: auto;
+    margin-bottom: 2px;
+  }
+  header nav{
+    grid-template:
+        'hamburger brand tools' var(--nav-height)
+        'sections sections sections' 1fr / auto auto auto;
+    align-items: center;
+    gap: 0 12px;
+  }
+  .header .nav-tools ul {
+    gap: 0;
+    padding: 0;
+  }
+  .header .nav-tools li {
+    align-items: center;
+  }
+  }

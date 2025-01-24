@@ -6,9 +6,30 @@
   grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
   grid-gap: 24px;
 }
+.shopping-cards ul{
+  grid-template-columns: repeat(3, minmax(257px, 1fr)) !important;
 
+}
+.shopping-cards .cards-card-body{
+  position: absolute !important;
+  top: 0 !important;
+  color: #fff !important;
+  text-align: center;
+}
+.shopping-cards .cards-card-body p:nth-child(1){
+  font-size:3.5rem;
+  margin: 0 !important;
+}
+.shopping-cards .cards-card-body p:nth-child(2){
+  font-size:16px !important;
+}
+.shopping-cards  ul  li {
+  position: relative !important;
+  display: flex !important;
+  justify-content: center !important ;
+}
 .cards > ul > li {
-  border: 1px solid #dadada;
+  /* border: 1px solid #dadada; */
   background-color: var(--background-color);
 }
 
@@ -24,4 +45,9 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+}
+@media (width < 900px) {
+.shopping-cards ul{
+  grid-template-columns: repeat(1, minmax(257px, 1fr)) !important;
+}
 }

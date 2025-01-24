@@ -31,3 +31,59 @@
     order: unset;
   }
 }
+.first-column-section  .columns > div > div:not(.columns-img-col) {
+  flex-grow: 2 !important;
+  text-align: center;
+}
+.first-column-section ul{
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    text-decoration: underline;
+}
+.first-column-section ul a,.second-column-section a{
+  all:unset !important;
+  text-decoration: underline !important;
+  cursor:  pointer !important;
+  margin-right: 4px !important;
+}
+.first-column-section p{
+  font-size: var(--body-font-size-s) !important;
+  color: #111827;
+}
+.first-column-section h2{
+  font-size: 3.75rem !important;
+}
+.first-column-section h3{
+  font-size: 3rem !important;
+}
+.second-column-section .columns-img-col{
+  flex-grow: 2 !important;
+  padding: 80px 0 !important;
+}
+.second-column-section  .columns > div{
+  align-items: stretch;
+  gap: 0 !important;
+}
+.products + div .columns > div {
+  align-items: stretch; 
+}
+.second-column-section  .columns > div > div:not(.columns-img-col) {
+  background: rgb(27, 37, 44);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color:#fff
+}
+.second-column-section  .columns > div > div:not(.columns-img-col) h2 {
+  font-size: 3.75rem !important;
+  text-align: center;
+}
+.second-column-section  .columns > div > div:not(.columns-img-col) p {
+  font-size: 1rem !important;
+}
+.top-seller-heading p{
+  text-align: center;
+  font-size: 3.75rem;
+}

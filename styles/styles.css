@@ -239,7 +239,7 @@ main > .section > div {
 }
 
 main > .section:first-of-type {
-  margin-top: 0;
+  margin-top: 8px;
 }
 
 @media (width >= 900px) {
@@ -254,4 +254,10 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+.products{
+  text-align: center;
+}
+.products img{
+  width: 300px;
 }
